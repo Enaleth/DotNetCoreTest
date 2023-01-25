@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Upload";
+}
+@addTagHelper *,Microfost.AspNetCore.Mvc.TagHelpers
+@addTagHelper *,AuthoringTageHelpers
+
+<h1>Upload</h1>
+
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div>
+        <input type="file" name="File" />
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>

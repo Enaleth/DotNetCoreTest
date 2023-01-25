@@ -7,7 +7,7 @@ namespace DotNetCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SalariesController : ControllerBase
+    public class SalariesController : Controller
     {
         [HttpGet]
         public IActionResult Get()

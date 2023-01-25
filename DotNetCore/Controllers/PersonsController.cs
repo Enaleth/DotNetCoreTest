@@ -1,6 +1,10 @@
 ﻿using DotNetCore.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -8,7 +12,7 @@ namespace DotNetCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonsController : ControllerBase
+    public class PersonsController : Controller
     {
         [HttpGet]
         public IActionResult Get()
@@ -83,5 +87,11 @@ namespace DotNetCore.Controllers
 
             return NoContent();
         }
+
+        public IActionResult Upload()
+        {
+            return View();
+        }
+        //[HttpPost]
     }
 }

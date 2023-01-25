@@ -67,3 +67,5 @@ Z:\Documents\Websites\DotNetCore\DotNetCore\obj\Debug\netcoreapp3.1\DotNetCore.c
 Z:\Documents\Websites\DotNetCore\DotNetCore\obj\Debug\netcoreapp3.1\DotNetCore.dll
 Z:\Documents\Websites\DotNetCore\DotNetCore\obj\Debug\netcoreapp3.1\DotNetCore.pdb
 Z:\Documents\Websites\DotNetCore\DotNetCore\obj\Debug\netcoreapp3.1\DotNetCore.genruntimeconfig.cache
+Z:\Documents\Websites\DotNetCore\DotNetCore\obj\Debug\netcoreapp3.1\DotNetCore.RazorAssemblyInfo.cache
+Z:\Documents\Websites\DotNetCore\DotNetCore\obj\Debug\netcoreapp3.1\DotNetCore.RazorAssemblyInfo.cs
