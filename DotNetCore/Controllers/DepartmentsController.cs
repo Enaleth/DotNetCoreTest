@@ -9,13 +9,26 @@ namespace DotNetCore.Controllers
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
-        [HttpGet] 
+        [HttpGet]
         public IActionResult Get()
         {
             var db = new ApiDbContext();
 
             var list = db.Departments.ToList();
             return Ok(list);
+        }
+        [HttpGet("{Id}")]
+        public IActionResult Get(int id)
+        {
+            var db = new ApiDbContext();
+
+            Department department= db.Departments.Find(id);
+
+            if (department == null)
+            {
+                return NotFound();
+            }
+            return Ok(department);
         }
     }
 }

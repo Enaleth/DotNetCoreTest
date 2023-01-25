@@ -26,5 +26,19 @@ namespace DotNetCore.Controllers
                     }).ToList();
             return Ok(list);
         }
+
+        [HttpGet("{Id}")]
+        public IActionResult Get(int Id)
+        {
+            var db = new ApiDbContext();
+
+            Person person = db.Persons.FirstOrDefault(x => x.Id == Id);
+            
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return Ok(person);
+        }
     }
 }
