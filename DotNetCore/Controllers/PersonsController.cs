@@ -40,5 +40,48 @@ namespace DotNetCore.Controllers
             }
             return Ok(person);
         }
+
+        [HttpPost]
+        public IActionResult AddPerson(Person person)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var db = new ApiDbContext();
+
+            db.Persons.Add(person);
+
+            db.SaveChanges();
+
+            return Created("", person);
+        }
+
+        [HttpPut]
+        public IActionResult UpdatePerson(Person person)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var db = new ApiDbContext();
+
+            Person updatePerson = db.Persons.Find(person.Id);
+
+            updatePerson.Adress = person.Adress;
+            updatePerson.Age = person.Age;
+            updatePerson.Email = person.Email;
+            updatePerson.Name = person.Name;
+            updatePerson.Password = person.Password;
+            updatePerson.PositionId = person.PositionId;
+            updatePerson.SalaryId = person.SalaryId;
+            updatePerson.Surname = person.Surname;
+
+            db.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

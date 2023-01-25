@@ -30,5 +30,40 @@ namespace DotNetCore.Controllers
             }
             return Ok(department);
         }
+
+        [HttpPost]
+        public IActionResult AddDepartment(Department department)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            
+            var db = new ApiDbContext();
+
+            db.Departments.Add(department);
+
+            db.SaveChanges();
+
+            return Created("", department);
+        }
+
+        [HttpPut]
+        public IActionResult UpdateDepartment(Department department)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var db = new ApiDbContext();
+
+            Department updateDepartment = db.Departments.Find(department.DepartmentId);
+            updateDepartment.DepartmentName = department.DepartmentName;
+
+            db.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
