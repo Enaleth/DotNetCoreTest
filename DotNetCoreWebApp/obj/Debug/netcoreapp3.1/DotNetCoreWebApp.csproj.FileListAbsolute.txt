@@ -176,3 +176,4 @@ Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\
 Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Person\Index.cshtml.g.cs
 Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Department\Add.cshtml.g.cs
 Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Person\Add.cshtml.g.cs
+Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Salary\Index.cshtml.g.cs
