@@ -7,7 +7,7 @@ namespace DotNetCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentsController : Controller
+    public class DepartmentsController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()

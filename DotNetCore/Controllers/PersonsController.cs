@@ -12,7 +12,7 @@ namespace DotNetCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonsController : Controller
+    public class PersonsController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()
