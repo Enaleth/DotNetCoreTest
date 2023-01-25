@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+yqkIZFitqzvo2Q0Oi9V05DaijdkBRZaHh6/sg5Fe/9Tx9TIgn+vXfqcaI+vphwZSM6T/9pCGs0DlJ962eXwQA==",
+  "dgSpecHash": "HIU4DPWNg1eBjd8/bsWkFrsB6Fz6JLwQFzrSclWrt8u0n01RY/rHi0xZt/4pkx5qHjhHebN2iGRPSOOTC6yNUA==",
   "success": true,
-  "projectFilePath": "Z:\\Documents\\Websites\\DotNetCore\\DotNetCore\\DotNetCore.csproj",
+  "projectFilePath": "Z:\\Documents\\Websites\\DotNetCore\\DotNetCore\\DotNetCoreBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lacor\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\lacor\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
@@ -162,8 +162,7 @@
     "C:\\Users\\lacor\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\lacor\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\lacor\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\lacor\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\lacor\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
+    "C:\\Users\\lacor\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

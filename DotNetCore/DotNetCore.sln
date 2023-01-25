@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore", "DotNetCore.csproj", "{3FCAAABD-FE92-42F8-9976-DF2364C8FD91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreBackend", "DotNetCoreBackend.csproj", "{3FCAAABD-FE92-42F8-9976-DF2364C8FD91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreWebApp", "..\DotNetCoreWebApp\DotNetCoreWebApp.csproj", "{AE6ADE40-E103-4637-8732-B6CA30877465}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3FCAAABD-FE92-42F8-9976-DF2364C8FD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FCAAABD-FE92-42F8-9976-DF2364C8FD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FCAAABD-FE92-42F8-9976-DF2364C8FD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE6ADE40-E103-4637-8732-B6CA30877465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE6ADE40-E103-4637-8732-B6CA30877465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE6ADE40-E103-4637-8732-B6CA30877465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE6ADE40-E103-4637-8732-B6CA30877465}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
