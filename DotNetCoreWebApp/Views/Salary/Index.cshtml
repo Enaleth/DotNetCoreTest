@@ -8,7 +8,7 @@
 <h1>Salary List</h1>
 <div>
     <a asp-action="Add" style="color:white" class="btn btn-primary">Add</a>
-    <table>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Amount</th>
@@ -18,13 +18,13 @@
         <tbody>
             @foreach (var item in Model)
             {
-                    <tr>
-                        <td>@item.Amount</td>
-                        <td>
-                            <a style="color:white" class="btn btn-success" asp-action="Update" asp-route-id="@item.SalaryId">Update</a>
-                            <a style="color:white" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.SalaryId">Delete</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>@item.Amount</td>
+                    <td>
+                        <a style="color:white" class="btn btn-success" asp-action="Update" asp-route-id="@item.SalaryId">Update</a>
+                        <a style="color:white" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.SalaryId">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
