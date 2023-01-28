@@ -13,8 +13,8 @@ namespace DotNetCoreWebApp.Controllers
         {
             List<Salary> list = new List<Salary>();
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("https://localhost:44391/api/Salaries");
-                if (message.IsSuccessStatusCode)
+            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/Salaries");
+            if (message.IsSuccessStatusCode)
             {
                 var jstring = await message.Content.ReadAsStringAsync();
                 list = JsonConvert.DeserializeObject<List<Salary>>(jstring);

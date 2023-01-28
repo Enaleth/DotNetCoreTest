@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DotNetCoreWebApp.Controllers
@@ -12,8 +13,8 @@ namespace DotNetCoreWebApp.Controllers
         public async Task<IActionResult> Index()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("https://localhost:44391/api/persons");
-            
+            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/persons");
+
             if (message.IsSuccessStatusCode)
             {
                 var jstring = await message.Content.ReadAsStringAsync();
@@ -27,7 +28,30 @@ namespace DotNetCoreWebApp.Controllers
         }
         public IActionResult Add()
         {
-            return View();
+            Person person = new Person();
+            return View(person);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Add(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                HttpClient client = new HttpClient();
+
+                var jsonPerson = JsonConvert.SerializeObject(person);
+                StringContent content = new StringContent(jsonPerson, Encoding.UTF8, "application/json");
+                HttpResponseMessage message = await client.PostAsync("http://localhost:51336/api/persons", content);
+
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("", "There is an API error");
+                return View(person);
+            }
+
+            return View(person);
         }
     }
 }

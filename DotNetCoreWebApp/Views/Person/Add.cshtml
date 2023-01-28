@@ -44,6 +44,8 @@
             <label>Person Salary</label>
             <input asp-for="SalaryId" class="form-control" />
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <div asp-validation-summary="ModelOnly">
+        </div>
     </div>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
