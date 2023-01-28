@@ -23,5 +23,17 @@ namespace DotNetCoreWebApp.Controllers
 
             return View(list);
         }
+
+        public async Task<IActionResult> Delete (int Id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.DeleteAsync("http://localhost:51336/api/Salaries" + Id);
+            if (message.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

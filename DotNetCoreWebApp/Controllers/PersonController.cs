@@ -53,5 +53,50 @@ namespace DotNetCoreWebApp.Controllers
 
             return View(person);
         }
+
+        public async Task<IActionResult> Update(int Id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/persons" + Id);
+            if (message.IsSuccessStatusCode)
+            {
+                var jstring = await message.Content.ReadAsStringAsync();
+                Person person = JsonConvert.DeserializeObject<Person>(jstring);
+                return View(person);
+            }
+            return RedirectToAction("Update");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                HttpClient client = new HttpClient();
+                var jsonperson = JsonConvert.SerializeObject(person);
+                StringContent content = new StringContent(jsonperson, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage message = await client.PutAsync("http://localhost:51336/api/persons", content);
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return View(person);
+            }
+            return View(person);
+        }
+
+        public async Task<IActionResult> Delete(int Id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.DeleteAsync("http://localhost:51336/api/persons" + Id);
+            if (message.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

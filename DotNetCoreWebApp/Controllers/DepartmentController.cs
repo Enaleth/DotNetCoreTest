@@ -50,5 +50,51 @@ namespace DotNetCoreWebApp.Controllers
 
             return View(department);
         }
+
+        public async Task<IActionResult> Update(int Id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/departments" + Id);
+
+            if (message.IsSuccessStatusCode)
+            {
+                var jstring = await message.Content.ReadAsStringAsync();
+                Department department = JsonConvert.DeserializeObject<Department>(jstring);
+                return View(department);
+            }
+
+            return RedirectToAction("Update");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Department department)
+        {
+            if (ModelState.IsValid)
+            {
+                HttpClient client = new HttpClient();
+                var jsondepartment = JsonConvert.SerializeObject(department);
+                StringContent content = new StringContent(jsondepartment, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage message = await client.PutAsync("http://localhost:51336/api/departments", content);
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return View(department);
+            }
+            return View(department);
+        }
+        public async Task<IActionResult> Delete(int Id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.DeleteAsync("http://localhost:51336/api/departments" + Id);
+            if (message.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
