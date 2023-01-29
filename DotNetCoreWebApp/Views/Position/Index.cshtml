@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *,AuthoringTagHelpers
+@model List<Position>
+<h1>Position List</h1>
+<div>
+    <a asp-action="Add" style="color:white" class="btn btn-primary">Add</a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Position Name</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>
+                        <a style="color:white" class="btn btn-success" asp-action="Update" asp-route-id="@item.PositionId">Update</a>
+                        <a style="color:white" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PositionId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
