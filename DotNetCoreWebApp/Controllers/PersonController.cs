@@ -26,11 +26,13 @@ namespace DotNetCoreWebApp.Controllers
 
             return View(new List<PersonAll>());
         }
+
         public IActionResult Add()
         {
             Person person = new Person();
             return View(person);
         }
+
         [HttpPost]
         public async Task<IActionResult> Add(Person person)
         {
@@ -57,7 +59,7 @@ namespace DotNetCoreWebApp.Controllers
         public async Task<IActionResult> Update(int Id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/persons" + Id);
+            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/persons/" + Id);
             if (message.IsSuccessStatusCode)
             {
                 var jstring = await message.Content.ReadAsStringAsync();
@@ -90,7 +92,7 @@ namespace DotNetCoreWebApp.Controllers
         public async Task<IActionResult> Delete(int Id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.DeleteAsync("http://localhost:51336/api/persons" + Id);
+            HttpResponseMessage message = await client.DeleteAsync("http://localhost:51336/api/persons/" + Id);
             if (message.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

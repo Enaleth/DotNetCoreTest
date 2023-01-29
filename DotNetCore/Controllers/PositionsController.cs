@@ -7,51 +7,51 @@ namespace DotNetCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentsController : ControllerBase
+    public class PositionsController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()
         {
             var db = new ApiDbContext();
 
-            var list = db.Departments.ToList();
+            var list = db.Positions.ToList();
             return Ok(list);
         }
 
         [HttpGet("{Id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get (int id)
         {
             var db = new ApiDbContext();
 
-            Department department= db.Departments.Find(id);
+            Position position = db.Positions.Find(id);
 
-            if (department == null)
+            if (position == null)
             {
                 return NotFound();
             }
 
-            return Ok(department);
+            return Ok(position);
         }
 
         [HttpPost]
-        public IActionResult AddDepartment(Department department)
+        public IActionResult AddPosition (Position position)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            
+
             var db = new ApiDbContext();
 
-            db.Departments.Add(department);
+            db.Positions.Add(position);
 
             db.SaveChanges();
 
-            return Created("", department);
+            return Created("", position);
         }
 
         [HttpPut]
-        public IActionResult UpdateDepartment(Department department)
+        public IActionResult UpdatePosition(Position position)
         {
             if (!ModelState.IsValid)
             {
@@ -60,9 +60,9 @@ namespace DotNetCore.Controllers
 
             var db = new ApiDbContext();
 
-            Department updateDepartment = db.Departments.Find(department.DepartmentId);
+            Position updatePosition = db.Positions.Find(position.PositionId);
 
-            updateDepartment.DepartmentName = department.DepartmentName;
+            updatePosition.Name = position.Name;
 
             db.SaveChanges();
 
@@ -70,17 +70,18 @@ namespace DotNetCore.Controllers
         }
 
         [HttpDelete("{Id}")]
-        public IActionResult DeleteDepartment(int id)
+        public IActionResult DeletePosition(int id)
         {
             var db = new ApiDbContext();
 
-            Department department = db.Departments.Find(id);
+            Position position = db.Positions.Find(id);
 
-            if (department == null)
+            if (position == null)
             {
                 return NotFound();
             }
-            db.Departments.Remove(department);
+
+            db.Positions.Remove(position);
 
             db.SaveChanges();
 

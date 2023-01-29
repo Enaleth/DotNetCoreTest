@@ -30,6 +30,7 @@ namespace DotNetCoreWebApp.Controllers
             Department department = new Department();
             return View(department);
         }
+
         [HttpPost]
         public async Task<IActionResult> Add(Department department)
         {
@@ -54,7 +55,7 @@ namespace DotNetCoreWebApp.Controllers
         public async Task<IActionResult> Update(int Id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/departments" + Id);
+            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/departments/" + Id);
 
             if (message.IsSuccessStatusCode)
             {
@@ -81,14 +82,16 @@ namespace DotNetCoreWebApp.Controllers
                     return RedirectToAction("Index");
                 }
 
-                return View(department);
+               return View(department);
             }
+
             return View(department);
         }
         public async Task<IActionResult> Delete(int Id)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage message = await client.DeleteAsync("http://localhost:51336/api/departments" + Id);
+
+            HttpResponseMessage message = await client.DeleteAsync("http://localhost:51336/api/departments/" + Id);
             if (message.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

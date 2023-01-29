@@ -92,5 +92,23 @@ namespace DotNetCore.Controllers
         {
             return View();
         }
+
+        [HttpDelete("{Id}")]
+        public IActionResult DeletePerson(int id)
+        {
+            var db = new ApiDbContext();
+
+            Person person = db.Persons.Find(id);
+
+            if (person == null)
+            {
+                return NotFound();
+            }
+            db.Persons.Remove(person);
+
+            db.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
