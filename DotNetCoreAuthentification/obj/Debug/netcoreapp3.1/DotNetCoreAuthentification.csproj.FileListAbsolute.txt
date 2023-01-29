@@ -96,3 +96,4 @@ Z:\Documents\Websites\DotNetCore\DotNetCoreAuthentification\obj\Debug\netcoreapp
 Z:\Documents\Websites\DotNetCore\DotNetCoreAuthentification\obj\Debug\netcoreapp3.1\DotNetCoreAuthentification.dll
 Z:\Documents\Websites\DotNetCore\DotNetCoreAuthentification\obj\Debug\netcoreapp3.1\DotNetCoreAuthentification.pdb
 Z:\Documents\Websites\DotNetCore\DotNetCoreAuthentification\obj\Debug\netcoreapp3.1\DotNetCoreAuthentification.genruntimeconfig.cache
+Z:\Documents\Websites\DotNetCore\DotNetCoreAuthentification\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll

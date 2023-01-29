@@ -40,8 +40,11 @@ namespace DotNetCoreAuthentification
             {
                 x.ClientId = "546117640611545";
                 x.ClientSecret = "c5243db3640c676d28158687ee076580";
+            }).AddGoogle(x =>
+            {
+                x.ClientId = "60269885995-u3b2h4cdeg5jiq3f355h2lqjavdbgkif.apps.googleusercontent.com";
+                x.ClientSecret = "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";
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
