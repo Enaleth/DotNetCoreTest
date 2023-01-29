@@ -9,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
 using System.IO;
+using Microsoft.AspNetCore.Cors;
 
 namespace DotNetCore.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonsController : Controller
@@ -115,11 +117,13 @@ namespace DotNetCore.Controllers
         [HttpPost("uploadfile")]
         public async Task<IActionResult> UploadFile([FromForm]IFormFile file)
         {
-            string filename = Guid.NewGuid().ToString() + file.FileName;
-            string filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files/" + filename);
-            FileStream stream = new FileStream(filepath, FileMode.Create);
-            await file.CopyToAsync(stream);
-            return Created("", null);
+            string fileName = Guid.NewGuid().ToString() + file.FileName;
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files/" + fileName);
+            using (FileStream stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+                return Created("", null);
+            }
         }
     }
 }

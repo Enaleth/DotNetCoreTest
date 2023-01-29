@@ -25,6 +25,9 @@ namespace DotNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(x => x.AddPolicy("DotNetCorePolicy", policy =>
+                policy.WithMethods().WithOrigins("https://localhost").AllowAnyHeader()
+            ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +43,7 @@ namespace DotNetCore
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("DotNetCorePolicy");
 
             app.UseEndpoints(endpoints =>
             {

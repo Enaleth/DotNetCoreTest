@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,21 +110,28 @@ namespace DotNetCoreWebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Upload([FromForm]IFormFile file)
+        public async Task<IActionResult> Upload(/*[FromForm]*/IFormFile file)
         {
             HttpClient client = new HttpClient();
-            var bytes = await System.IO.File.ReadAllBytesAsync(file.FileName);
-            ByteArrayContent content = new ByteArrayContent(bytes);
-            MultipartFormDataContent data = new MultipartFormDataContent();
-            data.Add(content, "file", file.FileName);
-            HttpResponseMessage message = await client.PostAsync("http://localhost:51336/api/persons/uploadfile", data);
-            
-            if (message.IsSuccessStatusCode)
+            using (Stream stream = file.OpenReadStream())
             {
-                return RedirectToAction("Index");
-            }
 
-            return View();
+                MemoryStream memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                var bytes = memoryStream.ToArray();
+
+                ByteArrayContent content = new ByteArrayContent(bytes);
+                MultipartFormDataContent data = new MultipartFormDataContent();
+                data.Add(content, "File", file.FileName);
+                HttpResponseMessage message = await client.PostAsync("http://localhost:51336/api/persons/uploadfile", data);
+
+                if (message.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return View();
+            }
         }
     }
 }
