@@ -182,3 +182,4 @@ Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\
 Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Position\Add.cshtml.g.cs
 Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Position\Index.cshtml.g.cs
 Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Position\Update.cshtml.g.cs
+Z:\Documents\Websites\DotNetCore\DotNetCoreWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Person\Upload.cshtml.g.cs

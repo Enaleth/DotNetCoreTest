@@ -1,4 +1,5 @@
 ﻿using DotNetCoreWebApp.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -99,6 +100,29 @@ namespace DotNetCoreWebApp.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Upload([FromForm]IFormFile file)
+        {
+            HttpClient client = new HttpClient();
+            var bytes = await System.IO.File.ReadAllBytesAsync(file.FileName);
+            ByteArrayContent content = new ByteArrayContent(bytes);
+            MultipartFormDataContent data = new MultipartFormDataContent();
+            data.Add(content, "file", file.FileName);
+            HttpResponseMessage message = await client.PostAsync("http://localhost:51336/api/persons/uploadfile", data);
+            
+            if (message.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
     }
 }

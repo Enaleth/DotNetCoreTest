@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System;
+using System.IO;
 
 namespace DotNetCore.Controllers
 {
@@ -92,11 +94,6 @@ namespace DotNetCore.Controllers
             return NoContent();
         }
 
-        public IActionResult Upload()
-        {
-            return View();
-        }
-
         [HttpDelete("{Id}")]
         public IActionResult DeletePerson(int id)
         {
@@ -113,6 +110,16 @@ namespace DotNetCore.Controllers
             db.SaveChanges();
 
             return NoContent();
+        }
+
+        [HttpPost("uploadfile")]
+        public async Task<IActionResult> UploadFile([FromForm]IFormFile file)
+        {
+            string filename = Guid.NewGuid().ToString() + file.FileName;
+            string filepath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files/" + filename);
+            FileStream stream = new FileStream(filepath, FileMode.Create);
+            await file.CopyToAsync(stream);
+            return Created("", null);
         }
     }
 }
