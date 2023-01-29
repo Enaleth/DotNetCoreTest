@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +37,11 @@ namespace DotNetCoreAuthentification
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-
-            services.AddAuthentication().AddFacebook(x =>
+            services.AddAuthentication()
+                .AddFacebook(x =>
             {
-                x.ClientId = "546117640611545";
-                x.ClientSecret = "c5243db3640c676d28158687ee076580";
+                x.AppId = "546117640611545";
+                x.AppSecret = "c5243db3640c676d28158687ee076580";
             }).AddGoogle(x =>
             {
                 x.ClientId = "60269885995-u3b2h4cdeg5jiq3f355h2lqjavdbgkif.apps.googleusercontent.com";
