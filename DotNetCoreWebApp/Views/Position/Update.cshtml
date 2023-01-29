@@ -3,7 +3,7 @@
     ViewData["Title"] = "Update";
 }
 
-@model PositionAll
+@model Position
 
 <form method="post" asp-action="Update">
     <div class="form-row">
@@ -13,8 +13,8 @@
             <input asp-for="Name" class="form-control"/>
         </div>
         <div class="col-md-4 mb-3">
-            <label>Department Name</label>
-            <input asp-for="DepartmentName" class="form-control" />
+            <label>Department Id</label>
+            <input asp-for="DepartmentId" class="form-control" />
         </div>
         <div asp-validation-summary="ModelOnly"></div>
     </div>

@@ -19,7 +19,10 @@ namespace DotNetCore.Controllers
         {
             var db = new ApiDbContext();
 
-            var list = db.Persons.Include(x => x.Salary).Include(x => x.Position).ThenInclude(x => x.Department)
+            var list = db.Persons
+                .Include(x => x.Salary)
+                .Include(x => x.Position)
+                .ThenInclude(x => x.Department)
                     .Select(x => new PersonAll()
                     {
                         Id = x.Id,
@@ -28,6 +31,7 @@ namespace DotNetCore.Controllers
                         Salary = x.Salary.Amount,
                         DepartmentName = x.Position.Department.DepartmentName
                     }).ToList();
+
             return Ok(list);
         }
 

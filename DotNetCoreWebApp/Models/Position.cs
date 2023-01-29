@@ -8,5 +8,6 @@ namespace DotNetCoreWebApp.Models
         public int PositionId { get; set; }
         [Required(ErrorMessage = "Please fill position name")]
         public string Name { get; set; }
+        public int DepartmentId { get; set; }
     }
 }

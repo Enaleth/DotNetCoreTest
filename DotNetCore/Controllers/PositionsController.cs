@@ -1,6 +1,8 @@
 ﻿using DotNetCore.Model;
+using DotNetCoreBackend.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace DotNetCore.Controllers
@@ -14,16 +16,24 @@ namespace DotNetCore.Controllers
         {
             var db = new ApiDbContext();
 
-            var list = db.Positions.ToList();
+            var list = db.Positions
+                .Include(x => x.Department)
+                .Select(x => new PositionAll()
+                    {
+                        PositionId = x.PositionId,
+                        Name = x.Name,
+                        DepartmentName = x.Department.DepartmentName
+                    }).ToList();
+
             return Ok(list);
         }
 
         [HttpGet("{Id}")]
-        public IActionResult Get (int id)
+        public IActionResult Get (int Id)
         {
             var db = new ApiDbContext();
 
-            Position position = db.Positions.Find(id);
+            Position position = db.Positions.FirstOrDefault(x => x.PositionId == Id);
 
             if (position == null)
             {
@@ -63,6 +73,7 @@ namespace DotNetCore.Controllers
             Position updatePosition = db.Positions.Find(position.PositionId);
 
             updatePosition.Name = position.Name;
+            updatePosition.DepartmentId = position.DepartmentId;
 
             db.SaveChanges();
 

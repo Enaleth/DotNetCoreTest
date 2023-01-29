@@ -3,7 +3,7 @@
 }
 @addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *,AuthoringTagHelpers
-@model PositionAll
+@model Position
 
 <form method="post" asp-action="Add">
     <div class="form-row">
@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-4 mb-3">
             <label>Department Name</label>
-            <input asp-for="DepartmentName" class="form-control" />
+            <input asp-for="DepartmentId" class="form-control" />
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
