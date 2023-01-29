@@ -7,7 +7,7 @@
 @model Person
 
 <form method="post" asp-action="Add">
-    <div class="form-row">
+    <div class="form-col">
         <div class="col-md-4 mb-3">
             <label>Person Name</label>
             <input asp-for="Name" class="form-control" />
@@ -20,8 +20,6 @@
             <label>Person Age</label>
             <input asp-for="Age" class="form-control" />
         </div>
-    </div>
-    <div class="form-row">
         <div class="col-md-4 mb-3">
             <label>Person Email</label>
             <input asp-for="Email" class="form-control" />
@@ -34,8 +32,6 @@
             <label>Person Adress</label>
             <input asp-for="Adress" class="form-control" />
         </div>
-    </div>
-    <div class="form-row">
         <div class="col-md-4 mb-3">
             <label>Person Position</label>
             <input asp-for="PositionId" class="form-control" />

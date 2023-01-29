@@ -12,19 +12,21 @@ namespace DotNetCoreWebApp.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            List<Position> list = new List<Position>();
             HttpClient client = new HttpClient();
-            HttpResponseMessage responseMessage = await client.GetAsync("http://localhost:51336/api/positions");
+            HttpResponseMessage message = await client.GetAsync("http://localhost:51336/api/positions");
 
-            if (responseMessage.IsSuccessStatusCode)
+            if (message.IsSuccessStatusCode)
             {
-                var jstring = await responseMessage.Content.ReadAsStringAsync();
-                list = JsonConvert.DeserializeObject<List<Position>>(jstring);
+                var jstring = await message.Content.ReadAsStringAsync();
+
+                List<PositionAll> list = JsonConvert.DeserializeObject<List<PositionAll>>(jstring);
+
                 return View(list);
             }
 
-            return View(list);
+            return View(new List<PositionAll>());
         }
+
         public IActionResult Add()
         {
             Position position = new Position();
